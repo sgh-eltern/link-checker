@@ -1,9 +1,10 @@
-sudo: required
-services:
-  - docker
+sudo: false
+
+language: bash
+
 env:
-  - SITE_URL=http://geb-herrenberg.de
+  - SITE_URL=http://geb-herrenberg.de/
   - SITE_URL=http://www.eltern-sgh.de/
   - SITE_URL=http://freunde-sgh.de/
-script:
-- "docker run stupchiy/checklink --recursive --broken -e $SITE_URL"
+
+script: "curl --silent --show-error --fail $SITE_URL"
